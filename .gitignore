@@ -1,4 +1,5 @@
 .idea
-app/vendor/
+vendor
 app/storage/cache
 app/config/local
+composer.lock
