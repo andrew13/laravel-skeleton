@@ -15,3 +15,10 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+
+Route::group(array('prefix' => 'api','before' => 'apiVerify'), function() {
+
+
+
+});
