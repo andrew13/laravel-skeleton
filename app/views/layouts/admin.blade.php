@@ -8,29 +8,31 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 
-	<link href="./css/bootstrap.min.css" rel="stylesheet">
-	<link href="./css/bootstrap-responsive.min.css" rel="stylesheet">
+	@section('css')
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
 
-	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
-	<link href="./css/font-awesome.min.css" rel="stylesheet">
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+		<link href="/css/font-awesome.min.css" rel="stylesheet">
 
-	<link href="./css/ui-lightness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet">
+		<link href="/css/ui-lightness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet">
 
-	<link href="./css/base-admin-3.css" rel="stylesheet">
-	<link href="./css/base-admin-3-responsive.css" rel="stylesheet">
+		<link href="/css/base-admin-3.css" rel="stylesheet">
+		<link href="/css/base-admin-3-responsive.css" rel="stylesheet">
 
-	<link href="./css/pages/dashboard.css" rel="stylesheet">
+		<link href="/css/pages/dashboard.css" rel="stylesheet">
 
-	<link href="./css/custom.css" rel="stylesheet">
+		<link href="/css/custom.css" rel="stylesheet">
 
-	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	@show
 </head>
 
 <body>
+@section('body')
 
 <nav class="navbar navbar-inverse" role="navigation">
 
@@ -41,7 +43,7 @@
 				<span class="sr-only">Toggle navigation</span>
 				<i class="icon-cog"></i>
 			</button>
-			<a class="navbar-brand" href="./index.html">Base Admin 3.0</a>
+			<a class="navbar-brand" href="/admin">Hyfn CMS 1.0</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,31 +52,13 @@
 				<li class="dropdown">
 
 					<a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-cog"></i>
-						Settings
-						<b class="caret"></b>
-					</a>
-
-					<ul class="dropdown-menu">
-						<li><a href="./account.html">Account Settings</a></li>
-						<li><a href="javascript:;">Privacy Settings</a></li>
-						<li class="divider"></li>
-						<li><a href="javascript:;">Help</a></li>
-					</ul>
-
-				</li>
-
-				<li class="dropdown">
-
-					<a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="icon-user"></i>
-						Rod Howard
+						EMAIL
 						<b class="caret"></b>
 					</a>
 
 					<ul class="dropdown-menu">
-						<li><a href="javascript:;">My Profile</a></li>
-						<li><a href="javascript:;">My Groups</a></li>
+						<li><a href="/admin/account/ID">Account Settings</a></li>
 						<li class="divider"></li>
 						<li><a href="javascript:;">Logout</a></li>
 					</ul>
@@ -111,7 +95,7 @@
 				<ul class="mainnav">
 
 					<li class="active">
-						<a href="./index.html">
+						<a href="/admin">
 							<i class="icon-home"></i>
 							<span>Home</span>
 						</a>
@@ -119,59 +103,16 @@
 
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-							<i class="icon-th"></i>
-							<span>Components</span>
+							<i class="icon-user"></i>
+							<span>Users</span>
 							<b class="caret"></b>
 						</a>
 
 						<ul class="dropdown-menu">
-							<li><a href="./elements.html">Elements</a></li>
-							<li><a href="./forms.html">Form Styles</a></li>
-							<li><a href="./jqueryui.html">jQuery UI</a></li>
-							<li><a href="./charts.html">Charts</a></li>
-							<li><a href="./popups.html">Popups/Notifications</a></li>
+							<li><a href="/admin/users">All Users</a></li>
+							<li><a href="/admin/users/ID">My Account</a></li>
 						</ul>
 					</li>
-
-					<li class="dropdown">
-						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-							<i class="icon-copy"></i>
-							<span>Sample Pages</span>
-							<b class="caret"></b>
-						</a>
-
-						<ul class="dropdown-menu">
-							<li><a href="./pricing.html">Pricing Plans</a></li>
-							<li><a href="./faq.html">FAQ's</a></li>
-							<li><a href="./gallery.html">Gallery</a></li>
-							<li><a href="./reports.html">Reports</a></li>
-							<li><a href="./account.html">User Account</a></li>
-						</ul>
-					</li>
-
-					<li class="dropdown">
-						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-							<i class="icon-external-link"></i>
-							<span>Extra Pages</span>
-							<b class="caret"></b>
-						</a>
-
-						<ul class="dropdown-menu">
-							<li><a href="./login.html">Login</a></li>
-							<li><a href="./signup.html">Signup</a></li>
-							<li><a href="./error.html">Error</a></li>
-							<li class="dropdown-submenu">
-								<a tabindex="-1" href="#">More options</a>
-								<ul class="dropdown-menu">
-									<li><a tabindex="-1" href="#">Second level</a></li>
-
-									<li><a href="#">Second level</a></li>
-									<li><a href="#">Second level</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-
 				</ul>
 			</div> <!-- /.subnav-collapse -->
 
@@ -186,6 +127,7 @@
 
 <div class="container">
 
+@section('content')
 <div class="row">
 
 <div class="col-md-6 col-xs-12">
@@ -477,78 +419,13 @@
 
 </div> <!-- /row -->
 
+@show
+
 </div> <!-- /container -->
 
 </div> <!-- /main -->
 
-
-
-<div class="extra">
-
-	<div class="container">
-
-		<div class="row">
-
-			<div class="col-md-3">
-
-				<h4>About</h4>
-
-				<ul>
-					<li><a href="javascript:;">About Us</a></li>
-					<li><a href="javascript:;">Twitter</a></li>
-					<li><a href="javascript:;">Facebook</a></li>
-					<li><a href="javascript:;">Google+</a></li>
-				</ul>
-
-			</div> <!-- /span3 -->
-
-			<div class="col-md-3">
-
-				<h4>Support</h4>
-
-				<ul>
-					<li><a href="javascript:;">Frequently Asked Questions</a></li>
-					<li><a href="javascript:;">Ask a Question</a></li>
-					<li><a href="javascript:;">Video Tutorial</a></li>
-					<li><a href="javascript:;">Feedback</a></li>
-				</ul>
-
-			</div> <!-- /span3 -->
-
-			<div class="col-md-3">
-
-				<h4>Legal</h4>
-
-				<ul>
-					<li><a href="javascript:;">License</a></li>
-					<li><a href="javascript:;">Terms of Use</a></li>
-					<li><a href="javascript:;">Privacy Policy</a></li>
-					<li><a href="javascript:;">Security</a></li>
-				</ul>
-
-			</div> <!-- /span3 -->
-
-			<div class="col-md-3">
-
-				<h4>Settings</h4>
-
-				<ul>
-					<li><a href="javascript:;">Consectetur adipisicing</a></li>
-					<li><a href="javascript:;">Eiusmod tempor </a></li>
-					<li><a href="javascript:;">Fugiat nulla pariatur</a></li>
-					<li><a href="javascript:;">Officia deserunt</a></li>
-				</ul>
-
-			</div> <!-- /span3 -->
-
-		</div> <!-- /row -->
-
-	</div> <!-- /container -->
-
-</div> <!-- /extra -->
-
-
-
+@show
 
 <div class="footer">
 
@@ -557,11 +434,11 @@
 		<div class="row">
 
 			<div id="footer-copyright" class="col-md-6">
-				&copy; 2012-13 Jumpstart UI.
+				&copy; 2013 Hyfn.
 			</div> <!-- /span6 -->
 
 			<div id="footer-terms" class="col-md-6">
-				Theme by <a href="http://jumpstartui.com" target="_blank">Jumpstart UI</a>
+				CMS By <a href="http://hyfn.com" target="_blank">HYfn</a>
 			</div> <!-- /.span6 -->
 
 		</div> <!-- /row -->
@@ -571,24 +448,24 @@
 </div> <!-- /footer -->
 
 
-
-
-
+@section('js')
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="./js/libs/jquery-1.9.1.min.js"></script>
-<script src="./js/libs/jquery-ui-1.10.0.custom.min.js"></script>
-<script src="./js/libs/bootstrap.min.js"></script>
+<script src="/js/libs/jquery-1.9.1.min.js"></script>
+<script src="/js/libs/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="/js/libs/bootstrap.min.js"></script>
 
-<script src="./js/plugins/flot/jquery.flot.js"></script>
-<script src="./js/plugins/flot/jquery.flot.pie.js"></script>
-<script src="./js/plugins/flot/jquery.flot.resize.js"></script>
+<script src="/js/plugins/flot/jquery.flot.js"></script>
+<script src="/js/plugins/flot/jquery.flot.pie.js"></script>
+<script src="/js/plugins/flot/jquery.flot.resize.js"></script>
 
-<script src="./js/Application.js"></script>
+<script src="/js/Application.js"></script>
 
-<script src="./js/charts/area.js"></script>
-<script src="./js/charts/donut.js"></script>
+<script src="/js/charts/area.js"></script>
+<script src="/js/charts/donut.js"></script>
+@show
+
 
 </body>
 </html>

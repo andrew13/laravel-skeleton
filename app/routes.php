@@ -1,5 +1,7 @@
 <?php
 
+Route::model('user', 'User');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -10,15 +12,35 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
-Route::get('/', function()
+Route::get('/hello',function()
 {
-	return View::make('hello');
+	return View::make('admin/index');
 });
 
 
-Route::group(array('prefix' => 'api','before' => 'apiVerify'), function() {
+Route::get('/login',function()
+{
+	return View::make('/login');
+});
 
+
+Route::group(array('prefix' => 'api/v1','before' => 'apiVerify'), function() {
+
+});
+
+
+Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
+
+
+	Route::get('/',function()
+	{
+		return View::make('admin/index');
+	});
+
+	Route::get('/account/{user}',function(User $user)
+	{
+		return View::make('admin/account');
+	});
 
 
 });
