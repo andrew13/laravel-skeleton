@@ -23,7 +23,7 @@ Route::get('/login',function()
 	return View::make('/login');
 });
 
-Route::post('/login', 'AuthController@login');
+Route::post('/login', 'AuthController@adminLogin');
 
 Route::group(array('prefix' => 'api/v1','before' => 'apiVerify'), function() {
 

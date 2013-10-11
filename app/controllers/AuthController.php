@@ -4,8 +4,25 @@ class AuthController extends BaseController {
 	/**
 	* Log the user in
 	*/
-	public function login()
+	public function adminLogin()
 	{
+		$user = $this->login();
+
+		if ($user) {
+			return Redirect::to('/');
+		}
+	}
+
+	public function apiLogin()
+	{
+		$user = $this->login();
+
+		if ($user) {
+			return $user;
+		}
+	}
+
+	private function login() {
 		try {
 			// Set login credentials
 			$credentials = array(
@@ -14,9 +31,7 @@ class AuthController extends BaseController {
 
 			// Try to authenticate the user
 			$user = Sentry::authenticate($credentials, false);
-			if ($user) {
-				return Redirect::to('/');
-			}
+			return $user;
 		} catch (Cartalyst\Sentry\Users\LoginRequiredException $e) {
 			return Redirect::to('login')->withErrors('Username field is required');
 		} catch (Cartalyst\Sentry\Users\PasswordRequiredException $e) {
