@@ -1,6 +1,6 @@
 <?php
 
-namespace Api\V1\UserController;
+namespace api\v1;
 
 class UserController extends Controller {
 
