@@ -12,24 +12,30 @@ Route::model('user', 'User');
 | and give it the Closure to execute when that URI is requested.
 |
 */
+
+/**
+ * Controller routes
+ */
 Route::get('/',function()
 {
 	return Redirect::to('/admin');
 });
 
-
-Route::get('/login',function()
-{
-	return View::make('/login');
-});
-
 Route::post('/login', 'AuthController@login');
 
-Route::group(array('prefix' => 'api/v1','before' => 'apiVerify'), function() {
 
+/**
+ * API Grouping routes
+ */
+Route::group(array('prefix' => 'api/v1','before' => 'auth.api'), function() {
+
+	Route::get('/test',function() { return ['success' => 1];});
 });
 
 
+/**
+ * Admin routes
+ */
 Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 
 
@@ -50,4 +56,12 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	});
 
 
+});
+
+/**
+ * View routes
+ */
+Route::get('/login',function()
+{
+	return View::make('/login');
 });

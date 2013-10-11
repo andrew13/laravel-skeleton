@@ -38,9 +38,12 @@ Route::filter('auth', function()
 	if (!Sentry::check()) return Redirect::guest('login');
 });
 
-Route::filter('apiAuth', function()
+/**
+ * Authenticate valid api key
+ */
+Route::filter('auth.api', function()
 {
-	return true;
+
 });
 
 
