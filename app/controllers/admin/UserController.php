@@ -1,5 +1,7 @@
 <?php
 
+namespace Admin\UserController;
+
 class UserController extends Controller {
 
 	/**

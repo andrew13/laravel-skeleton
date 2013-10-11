@@ -1,5 +1,7 @@
 <?php
 
+namespace Api\V1\UserController;
+
 class UserController extends Controller {
 
 	/**

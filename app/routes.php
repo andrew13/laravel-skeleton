@@ -14,7 +14,7 @@ Route::model('user', 'User');
 */
 Route::get('/',function()
 {
-	return View::make('admin/index');
+	return Redirect::to('/admin');
 });
 
 
@@ -23,6 +23,7 @@ Route::get('/login',function()
 	return View::make('/login');
 });
 
+Route::post('/login', 'AuthController@login');
 
 Route::group(array('prefix' => 'api/v1','before' => 'apiVerify'), function() {
 

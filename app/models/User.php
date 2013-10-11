@@ -1,4 +1,4 @@
-<?php namespace Cartalyst\Sentry\Users\Eloquent;
+<?php
 /**
  * Part of the Sentry package.
  *
