@@ -12,7 +12,7 @@ Route::model('user', 'User');
 | and give it the Closure to execute when that URI is requested.
 |
 */
-Route::get('/hello',function()
+Route::get('/',function()
 {
 	return View::make('admin/index');
 });
@@ -29,7 +29,7 @@ Route::group(array('prefix' => 'api/v1','before' => 'apiVerify'), function() {
 });
 
 
-Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
+Route::group(array('prefix' => 'admin'), function() {
 
 
 	Route::get('/',function()
@@ -37,9 +37,15 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 		return View::make('admin/index');
 	});
 
-	Route::get('/account/{user}',function(User $user)
+
+	Route::get('/users/',function()
 	{
-		return View::make('admin/account');
+		return View::make('admin/user-list');
+	});
+
+	Route::get('/users/profile',function()
+	{
+		return View::make('admin/user');
 	});
 
 
