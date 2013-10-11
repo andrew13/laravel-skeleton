@@ -29,7 +29,7 @@ Route::group(array('prefix' => 'api/v1','before' => 'apiVerify'), function() {
 });
 
 
-Route::group(array('prefix' => 'admin'), function() {
+Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 
 
 	Route::get('/',function()
