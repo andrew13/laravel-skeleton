@@ -5,7 +5,8 @@ use User;
 class UserController extends ApiController {
 	public function index()
 		{
-			return User::all();
+			$users =  User::all();
+			return \Hyfn::output($users->toArray());
 		}
 
 		public function create()
