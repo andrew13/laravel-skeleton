@@ -68,6 +68,7 @@ return array(
 	),
 	"unique"           => "The :attribute has already been taken.",
 	"url"              => "The :attribute format is invalid.",
+	'api_key' => 'This is an invalid API Key',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +81,9 @@ return array(
 	|
 	*/
 
-	'custom' => array(),
+	'custom' => array(
+
+	),
 
 	/*
 	|--------------------------------------------------------------------------

@@ -17,6 +17,7 @@ class CreateTableApiKeys extends Migration {
 			$table->string('key');
 			$table->string('device');
 			$table->timestamps();
+			$table->index('key');
 		});
 	}
 

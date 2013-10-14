@@ -13,7 +13,11 @@
 
 App::before(function($request)
 {
-	//
+	// Register Api key validator
+	Validator::resolver(function($translator, $data, $rules, $messages) {
+		return new CustomValidator($translator, $data, $rules, $messages);
+	});
+
 });
 
 
@@ -43,7 +47,16 @@ Route::filter('auth', function()
  */
 Route::filter('auth.api', function()
 {
+	$validator = Validator::make(
+		Input::all(),
+		array('api_key' => array('required', 'api_key'))
+	);
 
+	if ($validator->fails())
+	{
+		$messages = $validator->messages();
+		return  Hyfn::error($messages->first('api_key'),400);
+	}
 });
 
 

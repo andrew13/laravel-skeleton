@@ -14,6 +14,8 @@ class AddUsernameToUsersTable extends Migration {
 	{
 		Schema::table('users', function(Blueprint $table) {
 			$table->string('username');
+			$table->index(array('username','password'));
+			$table->index(array('email','password'));
 		});
 	}
 
