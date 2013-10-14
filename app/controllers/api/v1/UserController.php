@@ -1,20 +1,40 @@
-<?php
+<?php namespace api\v1;
+use ApiController;
+use User;
 
-namespace api\v1;
-
-class UserController extends Controller {
-
-	/**
-	 * Setup the layout used by the controller.
-	 *
-	 * @return void
-	 */
-	protected function setupLayout()
-	{
-		if ( ! is_null($this->layout))
+class UserController extends ApiController {
+	public function index()
 		{
-			$this->layout = View::make($this->layout);
+			return User::all();
 		}
-	}
 
+		public function create()
+		{
+
+		}
+
+		public function store()
+		{
+
+		}
+
+		public function show($user_id)
+		{
+
+		}
+
+		public function edit($user_id)
+		{
+
+		}
+
+		public function update($user_id)
+		{
+
+		}
+
+		public function destroy($user_id)
+		{
+
+		}
 }

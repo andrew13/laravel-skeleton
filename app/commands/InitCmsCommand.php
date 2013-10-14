@@ -39,6 +39,8 @@ class InitCmsCommand extends Command {
 	{
 		$this->call('migrate:reset');
 		$this->call('migrate', ['--package' => 'cartalyst/sentry']);
+		$this->call('migrate');
+		$this->call('db:seed');
 	}
 
 	/**
