@@ -42,12 +42,12 @@ class UserController extends AdminController {
 
 	public function edit($user_id)
 	{
-		return View::make('admin.users.edit')->with('users', User::find($user_id));;
+		return View::make('admin.users.edit')->with('user', User::find($user_id));;
 	}
 
 	public function update($user_id)
 	{
-
+		return View::make('admin.users.edit')->with('user', User::find($user_id));;
 	}
 
 	public function destroy($user_id)
