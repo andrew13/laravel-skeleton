@@ -12,72 +12,26 @@
 		<table class="table table-striped table-bordered">
 			<thead>
 			<tr>
-				<th>Engine</th>
-				<th>Browser</th>
+				<th>Email</th>
+				<th>First Name</th>
+				<th>Last Name</th>
 				<th class="td-actions"></th>
 			</tr>
 			</thead>
 			<tbody>
+			@foreach ($users as $user)
 			<tr>
-				<td>Trident</td>
-				<td>Internet
-					Explorer 4.0</td>
+				<td>{{$user->email}}</td>
+				<td>{{$user->first_name}}</td>
+				<td>{{$user->last_name}}</td>
 				<td class="td-actions">
 					<a href="javascript:;" class="btn btn-xs btn-primary">
 						<i class="btn-icon-only icon-ok"></i>
 					</a>
 				</td>
 			</tr>
-			<tr>
-				<td>Trident</td>
-				<td>Internet
-					Explorer 5.0</td>
-				<td class="td-actions">
-					<a href="javascript:;" class="btn btn-xs btn-primary">
-						<i class="btn-icon-only icon-ok"></i>
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<td>Trident</td>
-				<td>Internet
-					Explorer 5.5</td>
-				<td class="td-actions">
-					<a href="javascript:;" class="btn btn-xs btn-primary">
-						<i class="btn-icon-only icon-ok"></i>
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<td>Trident</td>
-				<td>Internet
-					Explorer 5.5</td>
-				<td class="td-actions">
-					<a href="javascript:;" class="btn btn-xs btn-primary">
-						<i class="btn-icon-only icon-ok"></i>
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<td>Trident</td>
-				<td>Internet
-					Explorer 5.5</td>
-				<td class="td-actions">
-					<a href="javascript:;" class="btn btn-xs btn-primary">
-						<i class="btn-icon-only icon-ok"></i>
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<td>Trident</td>
-				<td>Internet
-					Explorer 5.5</td>
-				<td class="td-actions">
-					<a href="javascript:;" class="btn btn-xs btn-primary">
-						<i class="btn-icon-only icon-ok"></i>
-					</a>
-				</td>
-			</tr>
+			@endforeach
+
 			</tbody>
 		</table>
 

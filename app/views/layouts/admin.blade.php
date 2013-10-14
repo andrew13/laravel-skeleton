@@ -110,7 +110,8 @@
 
 						<ul class="dropdown-menu">
 							<li><a href="/admin/users">All Users</a></li>
-							<li><a href="/admin/users/profile">My Account</a></li>
+							<li><a href="/admin/users/profile">My Account</a></li> <!-- TODO : Should this point to same as above link? -->
+							<li><a href="/admin/users/create">Create New Account</a></li>
 						</ul>
 					</li>
 				</ul>
