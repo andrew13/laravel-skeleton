@@ -26,8 +26,16 @@ use Cartalyst\Sentry\Users\PasswordRequiredException;
 use Cartalyst\Sentry\Users\UserAlreadyActivatedException;
 use Cartalyst\Sentry\Users\UserExistsException;
 use Cartalyst\Sentry\Users\UserInterface;
+use LaravelBook\Ardent\Ardent;
 
 class User extends Ardent implements UserInterface {
+
+	public static $rules = array(
+		'name'                  => 'required|between:4,16',
+		'email'                 => 'required|email',
+		'password'              => 'required|alpha_num|between:4,8|confirmed',
+		'password_confirmation' => 'required|alpha_num|between:4,8',
+	);
 
 	/**
 	 * The table associated with the model.
@@ -255,52 +263,6 @@ class User extends Ardent implements UserInterface {
 	public function isSuperUser()
 	{
 		return $this->hasPermission('superuser');
-	}
-
-	/**
-	 * Validates the user and throws a number of
-	 * Exceptions if validation fails.
-	 *
-	 * @return bool
-	 * @throws \Cartalyst\Sentry\Users\LoginRequiredException
-	 * @throws \Cartalyst\Sentry\Users\PasswordRequiredException
-	 * @throws \Cartalyst\Sentry\Users\UserExistsException
-	 */
-	public function validate()
-	{
-		if ( ! $login = $this->{static::$loginAttribute})
-		{
-			throw new LoginRequiredException("A login is required for a user, none given.");
-		}
-
-		if ( ! $password = $this->getPassword())
-		{
-			throw new PasswordRequiredException("A password is required for user [$login], none given.");
-		}
-
-		// Check if the user already exists
-		$query = $this->newQuery();
-		$persistedUser = $query->where($this->getLoginName(), '=', $login)->first();
-
-		if ($persistedUser and $persistedUser->getId() != $this->getId())
-		{
-			throw new UserExistsException("A user already exists with login [$login], logins must be unique for users.");
-		}
-
-		return true;
-	}
-
-	/**
-	 * Saves the user.
-	 *
-	 * @param  array  $options
-	 * @return bool
-	 */
-	public function save(array $options = array())
-	{
-		$this->validate();
-
-		return parent::save($options);
 	}
 
 	/**

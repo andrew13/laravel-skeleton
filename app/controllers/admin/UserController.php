@@ -1,6 +1,7 @@
 <?php namespace admin;
 
 use View;
+use User;
 
 class UserController extends \AdminController {
 
@@ -20,8 +21,7 @@ class UserController extends \AdminController {
 	public function index()
 	{
 
-		//return View::make('admin.users.index')->with('users', User::all());
-		return View::make('admin.users.index');
+		return View::make('admin.users.index')->with('users', User::all());
 	}
 
 	public function create()
