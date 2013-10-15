@@ -1,25 +1,16 @@
 <?php
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
-use LaravelBook\Ardent\Ardent;
+use Zizaco\Confide\ConfideUser;
 
-class User extends Ardent implements UserInterface, RemindableInterface {
+class User extends ConfideUser {
 
 	public static $rules = array(
 		'username'              => 'required|between:4,16',
-		'email'                 => 'required|email',
+		'email'                 => 'required|email|unique:users',
 		'password'              => 'required|alpha_num|between:4,8|confirmed',
 		'password_confirmation' => 'required|alpha_num|between:4,8',
 	);
 
-	/**
-	 * The table associated with the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
 
 	/**
 	 * The attributes that should be hidden for arrays.
@@ -27,10 +18,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array(
-		'password',
-		'reset_password_code',
-		'activation_code',
-		'persist_code',
+		'password'
 	);
 
 	protected $fillable = array('username', 'first_name', 'last_name', 'email', 'password', 'password_confirmation');
