@@ -5,26 +5,7 @@ class AuthController extends BaseController {
 	/**
 	* Log the user in
 	*/
-	public function adminLogin()
-	{
-		$user = $this->login();
-
-		if ($user) {
-			return Redirect::to('/');
-		}
-	}
-
-	public function apiLogin()
-	{
-		$user = $this->login();
-
-		if ($user) {
-			return($user);
-			//return \Hyfn::output($user);
-		}
-	}
-
-	private function login() {
+	protected function login() {
 		try {
 			// Set login credentials
 			$credentials = array(
