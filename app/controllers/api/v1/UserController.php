@@ -2,13 +2,13 @@
 
 use ApiController;
 use User;
-use Hyfn;
+use Api;
 
 class UserController extends ApiController {
 	public function index()
 		{
 			$users =  User::all();
-			return Hyfn::output($users->toArray());
+			return Api::response($users->toArray());
 		}
 
 		public function create()

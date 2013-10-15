@@ -56,6 +56,15 @@ class User extends Ardent implements UserInterface, RemindableInterface {
 	}
 
 	/**
+	 * Accessor for permissions will json decode the attribute
+	 * @param $value
+	 * @return mixed
+	 */
+	public function getPermissionsAttribute($value)
+	{
+		return json_decode($value);
+	}
+	/**
 	 * Get the e-mail address where password reminders are sent.
 	 *
 	 * @return string

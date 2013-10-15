@@ -53,7 +53,7 @@ Route::filter('auth.api', function()
 	if ($validator->fails())
 	{
 		$errors = $validator->errors()->getMessages();
-		return  Hyfn::error($errors);
+		return  Api::error($errors);
 	}
 });
 
