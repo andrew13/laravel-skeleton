@@ -13,8 +13,10 @@
 
 				<div class="widget-content">
 					<!-- use form.blade.php -->
-					{{ Form::open(array('url' => 'admin/users/update', 'method' => 'put', 'id' => 'edit-user', 'class' => 'form-horizontal col-md-8)) }}
-						{{ Form::model($user) }}
+					{{ Form::open(array('url' => 'admin/users/update', 'method' => 'put', 'id' => 'edit-user', 'class' => 'form-horizontal col-md-8')) }}
+						@yield('form')
+							@include('admin/users/form')
+						@stop
 					{{ Form::close() }}
 				</div> <!-- /widget-content -->
 

@@ -12,6 +12,7 @@
 		<table class="table table-striped table-bordered">
 			<thead>
 			<tr>
+				<th>Username</th>
 				<th>Email</th>
 				<th>First Name</th>
 				<th>Last Name</th>
@@ -21,6 +22,7 @@
 			<tbody>
 			@foreach ($users as $user)
 			<tr>
+				<td>{{$user->username}}</td>
 				<td>{{$user->email}}</td>
 				<td>{{$user->first_name}}</td>
 				<td>{{$user->last_name}}</td>

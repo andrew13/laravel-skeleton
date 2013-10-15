@@ -13,7 +13,7 @@
 
 				<div class="widget-content">
 					<!-- use form.blade.php -->
-					{{ Form::open(array('url' => 'admin/users/create', 'method' => 'post', 'id' => 'create-user', 'class' => 'form-horizontal col-md-8')) }}
+					{{ Form::open(array('url' => 'admin/users', 'method' => 'post', 'id' => 'create-user', 'class' => 'form-horizontal col-md-8')) }}
 						@yield('form')
 							@include('admin/users/form')
 						@stop

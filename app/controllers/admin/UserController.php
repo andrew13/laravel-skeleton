@@ -1,8 +1,12 @@
 <?php namespace admin;
 
-use View;
-use User;
 use AdminController;
+use User;
+use View;
+use Input;
+use Sentry;
+use Eloquent;
+use Redirect;
 
 class UserController extends AdminController {
 
@@ -26,13 +30,24 @@ class UserController extends AdminController {
 
 	public function create()
 	{
-		return View::make('admin.users.create');
+		return View::make('admin.users.create')->with('user', new User());
 	}
 
 	public function store()
 	{
 		// Get form data, create new user
-
+		$user_data = Input::all();
+		$user = new User($user_data);
+		if ($user->validate()) {
+			unset($user_data['password_confirmation']);
+			unset($user_data['_token']);
+			$user = Sentry::createUser($user_data);
+			return Redirect::to('admin/users');
+		} else {
+			$errors = $user->errors();
+			// TODO: Get this working where it displays the errors
+			return Redirect::to('admin/users/create')->with_errors($errors);
+		}
 	}
 
 	public function show($user_id)
@@ -47,6 +62,7 @@ class UserController extends AdminController {
 
 	public function update($user_id)
 	{
+		// Get form data, update user, re-render form w/ updated user
 		return View::make('admin.users.edit')->with('user', User::find($user_id));;
 	}
 
