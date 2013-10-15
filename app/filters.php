@@ -44,16 +44,14 @@ Route::filter('auth', function()
 Route::filter('auth.api', function()
 {
 	// Validate api key
-	$validator = Validator::make(
-		Input::all(),
-		array('api_key' => array('required', 'api_key'))
-	);
+	$rules = ['api_key' => 'required|api_key'];
+
+	$validate = Hyfn::validate($rules);
 
 	// Invalid API key
-	if ($validator->fails())
+	if ($validate !== true)
 	{
-		$errors = $validator->errors()->getMessages();
-		return  Api::error($errors);
+		return Api::error($validate);
 	}
 });
 

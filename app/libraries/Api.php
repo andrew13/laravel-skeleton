@@ -10,7 +10,7 @@ class Api {
 	 */
 	public static function response($data,$code = 200)
 	{
-		return ['meta' => ['code' => $code], 'data' => $data];
+		return Response::make(['meta' => ['code' => $code], 'data' => $data]);
 	}
 
 	/**
@@ -21,7 +21,7 @@ class Api {
 	 */
 	public static function error($error_message,$code = 400)
 	{
-		return ['meta' => ['code' => $code,'error_message' => $error_message]];
+		return Response::make(['meta' => ['code' => $code,'error_message' => $error_message]],$code);
 	}
 
 }

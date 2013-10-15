@@ -33,7 +33,7 @@ Route::post('/login', 'AuthController@adminLogin');
  */
 Route::group(array('prefix' => 'api/v1','before' => 'auth.api'), function() {
 	Route::get('/test',function() { return ['success' => 1];});
-	Route::post('/login', 'AuthController@apiLogin');
+	Route::post('/login', 'api\v1\AuthController@login');
 	Route::resource('users', 'api\v1\UserController');
 });
 
