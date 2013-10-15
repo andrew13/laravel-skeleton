@@ -36,6 +36,7 @@ class UserController extends AdminController {
 	public function store()
 	{
 		// Get form data, create new user
+		// Hacky, I know, but had to do this because of Sentry
 		$user_data = Input::all();
 		$user = new User($user_data);
 		if ($user->validate()) {
@@ -62,8 +63,22 @@ class UserController extends AdminController {
 
 	public function update($user_id)
 	{
-		// Get form data, update user, re-render form w/ updated user
-		return View::make('admin.users.edit')->with('user', User::find($user_id));;
+		// Get form data, find user and update
+		// Hacky, I know, but had to do this because of Sentry
+		$user_data = Input::all();
+		$user = User::find($user_id);
+		$user->fill($user_data);
+		if ($user->validate()) {
+			unset($user_data['password_confirmation']);
+			unset($user_data['_token']);
+			$user = Sentry::findUserById($user_id);
+			$user->update($user_data);
+			return Redirect::to('admin/users');
+		} else {
+			$errors = $user->errors();
+			// TODO: Get this working where it displays the errors
+			return Redirect::to('admin/users/' . $user_id . '/edit')->with_errors($errors);
+		}
 	}
 
 	public function destroy($user_id)

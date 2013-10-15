@@ -27,8 +27,8 @@
 				<td>{{$user->first_name}}</td>
 				<td>{{$user->last_name}}</td>
 				<td class="td-actions">
-					<a href="javascript:;" class="btn btn-xs btn-primary">
-						<i class="btn-icon-only icon-ok"></i>
+					<a href="/admin/users/{{$user->id}}/edit" class="btn btn-xs btn-primary">
+						<i class="btn-icon-only icon-edit"></i>
 					</a>
 				</td>
 			</tr>
