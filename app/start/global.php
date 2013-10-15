@@ -68,6 +68,12 @@ App::error(function(Exception $exception, $code)
 	}
 });
 
+
+App::missing(function()
+{
+	return Api::error('Not Found',404);
+});
+
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler
