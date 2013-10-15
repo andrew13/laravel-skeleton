@@ -10,4 +10,16 @@ class Hyfn {
 	{
 
 	}
+
+	public static function validate($rules)
+	{
+		$validation = Validator::make(Input::all(),$rules);
+
+		if($validation->fails())
+		{
+			return $validation->errors()->getMessages();
+		}
+
+		return true;
+	}
 }
