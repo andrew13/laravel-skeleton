@@ -20,6 +20,16 @@ ClassLoader::addDirectories(array(
 
 ));
 
+
+/**
+ * Custom validator
+ */
+// Register Api key validator
+Validator::resolver(function($translator, $data, $rules, $messages) {
+	return new CustomValidator($translator, $data, $rules, $messages);
+});
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Error Logger

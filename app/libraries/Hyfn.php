@@ -11,13 +11,13 @@ class Hyfn {
 
 	}
 
-	public static function output($data,$code = 200,$message= 'ok')
+	public static function output($data,$code = 200)
 	{
-		return ['meta' => ['code' => $code,'message' => $message, 'success' => true], 'data' => $data];
+		return ['meta' => ['code' => $code], 'data' => $data];
 	}
 
-	public static function error($message,$code = 400)
+	public static function error($error_message,$code = 400)
 	{
-		return ['meta' => ['code' => $code,'message' => $message, 'success' => false]];
+		return ['meta' => ['code' => $code,'error_message' => $error_message]];
 	}
 }

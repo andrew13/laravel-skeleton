@@ -1,12 +1,14 @@
 <?php namespace api\v1;
+
 use ApiController;
 use User;
+use Hyfn;
 
 class UserController extends ApiController {
 	public function index()
 		{
 			$users =  User::all();
-			return \Hyfn::output($users->toArray());
+			return Hyfn::output($users->toArray());
 		}
 
 		public function create()
