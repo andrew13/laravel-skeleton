@@ -1,5 +1,6 @@
 <?php
-
+// TODO:  Let's revisit this one day, I know I suggested this,
+// but I think we can refactor this and make it better
 class AuthController extends BaseController {
 	/**
 	* Log the user in
@@ -18,7 +19,8 @@ class AuthController extends BaseController {
 		$user = $this->login();
 
 		if ($user) {
-			return $user;
+			return($user);
+			//return \Hyfn::output($user);
 		}
 	}
 
