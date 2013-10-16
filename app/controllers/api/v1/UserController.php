@@ -10,13 +10,20 @@ class ApiV1UserController extends ApiController {
 
 		public function login()
 		{
+			$rules = [
+				'email' => 'required_without:username',
+				'username' => 'required_without:email',
+				'password' => 'required'
+			];
+
+			$validate = Hyfn::validate($rules);
+			if($validate!==true) return Api::error($validate);
+
 			$input = array(
 				'email'    => Input::get( 'email' ), // May be the username too
-				'username' => Input::get( 'email' ), // so we have to pass both
+				'username' => Input::get( 'username' ),
 				'password' => Input::get( 'password' )
 			);
-
-
 
 			// If you wish to only allow login from confirmed users, call logAttempt
 			// with the second parameter as true.
@@ -37,10 +44,8 @@ class ApiV1UserController extends ApiController {
 				elseif( $user->checkUserExists( $input ) and ! $user->isConfirmed( $input ) )
 				{
 					$err_msg = Lang::get('confide::confide.alerts.not_confirmed');
-				}
-				else
-				{
-					$err_msg = Lang::get('confide::confide.alerts.wrong_credentials');
+				} else {
+					$err_msg  = Lang::get('confide::confide.alerts.wrong_credentials');
 				}
 
 				return Api::error( $err_msg );
