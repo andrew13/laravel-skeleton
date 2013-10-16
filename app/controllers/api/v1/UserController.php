@@ -16,7 +16,7 @@ class ApiV1UserController extends ApiController {
 				'password' => Input::get( 'password' )
 			);
 
-			
+
 
 			// If you wish to only allow login from confirmed users, call logAttempt
 			// with the second parameter as true.
