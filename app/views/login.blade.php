@@ -61,8 +61,9 @@
 			<div class="login-actions">
 
 				<span class="login-checkbox">
-					<input id="Field" name="Field" type="checkbox" class="field login-checkbox" value="First Choice" tabindex="4" />
-					<label class="choice" for="Field">Keep me signed in</label>
+					<input type="hidden" name="remember" value="0">
+					<input id="remember" name="remember" type="checkbox" class="field login-checkbox" value="1" tabindex="4" />
+					<label for="remember" class="choice">Keep me signed in</label>
 				</span>
 
 				<button class="login-action btn btn-primary">Sign In</button>
