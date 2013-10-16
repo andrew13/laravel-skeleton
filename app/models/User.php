@@ -7,8 +7,8 @@ class User extends ConfideUser {
 	use HasRole;
 
 	public static $rules = array(
-		'username'              => 'required|between:4,16',
-		'email'                 => 'required|email|unique:users',
+		'username'              => 'required|alpha_dash|between:4,16|unique:users,username',
+		'email'                 => 'required|email|unique:users,email',
 		'password'              => 'required|alpha_num|between:4,8|confirmed',
 		'password_confirmation' => 'required|alpha_num|between:4,8',
 	);
@@ -62,5 +62,40 @@ class User extends ConfideUser {
 	public function getReminderEmail()
 	{
 		return $this->email;
+	}
+
+	/**
+	 * Overwrite the Ardent save method. Saves model into
+	 * database
+	 *
+	 * @param array $rules:array
+	 * @param array $customMessages
+	 * @param array $options
+	 * @param \Closure $beforeSave
+	 * @param \Closure $afterSave
+	 * @return bool
+	 */
+	public function save( array $rules = array(), array $customMessages = array(), array $options = array(), \Closure $beforeSave = null, \Closure $afterSave = null )
+	{
+		$duplicated = false;
+
+		if(! $this->id)
+		{
+				$duplicated = static::$app['confide.repository']->userExists( $this );
+		}
+
+		if(! $duplicated)
+		{
+				return $this->real_save( $rules, $customMessages, $options, $beforeSave, $afterSave );
+		}
+		else
+		{
+			$this->validate();
+			$this->validationErrors->add(
+					'duplicated',
+					static::$app['translator']->get('confide::confide.alerts.duplicated_credentials')
+			);
+			return false;
+		}
 	}
 }

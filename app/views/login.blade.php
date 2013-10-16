@@ -44,7 +44,6 @@
 			<h1>Sign In</h1>
 
 			<div class="login-fields">
-
 				<p>Sign in using your registered account:</p>
 
 				<div class="field">
@@ -69,6 +68,14 @@
 				<button class="login-action btn btn-primary">Sign In</button>
 
 			</div> <!-- .actions -->
+
+			@if ( Session::get('error') )
+				<div class="btn btn-info msgbox-error">{{{ Session::get('error') }}}</div>
+			@endif
+
+			@if ( Session::get('notice') )
+				<div class="btn btn-info msgbox-alert">{{{ Session::get('notice') }}}</div>
+			@endif
 
 		</form>
 
