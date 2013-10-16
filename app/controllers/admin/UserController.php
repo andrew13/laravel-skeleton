@@ -39,15 +39,11 @@ class UserController extends AdminController {
 		// Hacky, I know, but had to do this because of Sentry
 		$user_data = Input::all();
 		$user = new User($user_data);
-		if ($user->validate()) {
-			unset($user_data['password_confirmation']);
-			unset($user_data['_token']);
-			$user = Sentry::createUser($user_data);
+
+		if ($user->save()) {
 			return Redirect::to('admin/users');
 		} else {
-			$errors = $user->errors();
-			// TODO: Get this working where it displays the errors
-			return Redirect::to('admin/users/create')->with_errors($errors);
+			return Redirect::to('admin/users/create');
 		}
 	}
 
@@ -68,16 +64,13 @@ class UserController extends AdminController {
 		$user_data = Input::all();
 		$user = User::find($user_id);
 		$user->fill($user_data);
-		if ($user->validate()) {
-			unset($user_data['password_confirmation']);
-			unset($user_data['_token']);
-			$user = Sentry::findUserById($user_id);
-			$user->update($user_data);
+
+		if ($user->updateUniques()) {
 			return Redirect::to('admin/users');
 		} else {
-			$errors = $user->errors();
-			// TODO: Get this working where it displays the errors
-			return Redirect::to('admin/users/' . $user_id . '/edit')->with_errors($errors);
+			return Redirect::to('admin/users/' . $user_id . '/edit')
+				->withInput(Input::except('password'))
+				->withErrors($user->errors());
 		}
 	}
 

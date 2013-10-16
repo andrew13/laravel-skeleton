@@ -8,7 +8,7 @@
 
 				<div class="widget-header">
 					<i class="icon-user"></i>
-					<h3>Create New Account</h3>
+					<h3>Edit Account</h3>
 				</div> <!-- /widget-header -->
 
 				<div class="widget-content">
