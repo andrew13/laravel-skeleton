@@ -98,7 +98,7 @@ class AdminUserController extends AdminController {
 	public function do_login() {
 		$input = array(
 			'email'    => Input::get( 'email' ), // May be the username too
-			'username' => Input::get( 'email' ), // so we have to pass both
+			'username' => Input::get( 'username' ), // so we have to pass both
 			'password' => Input::get( 'password' ),
 			'remember' => Input::get( 'remember' ),
 		);
