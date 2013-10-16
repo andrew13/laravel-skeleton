@@ -11,7 +11,7 @@ class ApiV1UserController extends ApiController {
 		public function login()
 		{
 			$rules = [
-				'email' => 'required_without:username',
+				'email' => 'required_without:username|email',
 				'username' => 'required_without:email',
 				'password' => 'required'
 			];
