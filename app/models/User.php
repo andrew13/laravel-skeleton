@@ -7,8 +7,8 @@ class User extends ConfideUser {
 	use HasRole;
 
 	public static $rules = array(
-		'username'              => 'required|alpha_dash|between:4,16|unique:users,username',
-		'email'                 => 'required|email|unique:users,email',
+		'username'              => 'required|alpha_dash|between:4,16|unique:users',
+		'email'                 => 'required|email|unique:users',
 		'password'              => 'required|alpha_num|between:4,8|confirmed',
 		'password_confirmation' => 'required|alpha_num|between:4,8',
 	);
