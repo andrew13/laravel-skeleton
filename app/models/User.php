@@ -129,10 +129,23 @@ class User extends ConfideUser {
 		}
 	}
 
-
-	public function getToken()
+	/**
+	 * Will return the user object from cache based on the token key
+	 * @param $token
+	 */
+	public static function getFromToken($token)
 	{
-		$token = Redis::get(Config::get('cache.key_token_from_user').Confide::user()->id);
+		$user = Cache::get($token);
+	}
+
+	/**
+	 * Will return the token key based on userId
+	 * @param $userId
+	 * @return mixed
+	 */
+	public static function getToken($userId)
+	{
+		$token = Cache::get(Config::get('cache.key_token_from_user').$userId);
 		return $token;
 	}
 
@@ -144,32 +157,41 @@ class User extends ConfideUser {
 	public static function isValidToken($token)
 	{
 		$valid = false;
-		if(Redis::get($token)) {
-			return true;
+		if(Cache::get($token)) {
+			$valid = true;
 		}
+		return $valid;
 	}
 
+	/**
+	 * Sets the user's token and object in cache
+	 */
 	private function setToken()
 	{
-
 		// Invalidate old token
-		if($this->getToken())
+		if(static::getToken(Confide::user()->id))
 		{
-			$this->invalidateToken();
+			$token = static::getToken(Confide::user()->id);
+			static::invalidateToken($token);
 		}
 
 		// Generate Auth Token
-		$this->token = md5(Hash::make(microtime().rand(0,100000)).Confide::user()->id);
+		$token = md5(Hash::make(microtime().rand(0,100000)).Confide::user()->id);
 
 		// Set key
-		Redis::set($this->token,Confide::user());
-		Redis::set(Config::get('cache.key_token_from_user').Confide::user()->id,$this->token);
+		Cache::forever($token,Confide::user());
+		Cache::forever(Config::get('cache.key_token_from_user').Confide::user()->id,$token);
 
 	}
 
-	public function invalidateToken()
+	/**
+	 * Invalidates token and user object
+	 * @param $token
+	 */
+	public static function invalidateToken($token)
 	{
-		Redis::del($this->getToken());
+		Cache::forget(Config::get('cache.key_token_from_user').Confide::user()->id);
+		Cache::forget($token);
 	}
 
 }
