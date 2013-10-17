@@ -78,11 +78,3 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 
 */
 });
-
-/**
- * View routes
- */
-Route::get('/login',function()
-{
-	return View::make('/login');
-});

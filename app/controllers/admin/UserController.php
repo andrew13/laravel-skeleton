@@ -84,11 +84,11 @@ class AdminUserController extends AdminController {
 		{
 			// If user is logged, redirect to internal
 			// page, change it to '/admin', '/dashboard' or something
-			return Redirect::to('/');
+			return Redirect::to('/')->with('user', Confide::user());
 		}
 		else
 		{
-			return View::make('/login');
+			return View::make('/login')->with('user', new User());
 		}
 	}
 
