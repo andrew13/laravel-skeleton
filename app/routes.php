@@ -39,6 +39,7 @@ Route::group(array('prefix' => 'api/v1','before' => 'auth.api'), function() {
 	// NEED VALID TOKEN BEFORE ALLOWING THESE ROUTES
 	Route::group(array('before' => 'auth.token'), function() {
 		Route::resource('users', 'ApiV1UserController');
+		Route::any('/logout','ApiV1UserController@logout');
 	});
 
 
