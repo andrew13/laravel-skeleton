@@ -64,15 +64,25 @@ App::error(function(Exception $exception, $code)
 	{
 		Log::error($exception);
 	} else {
-		return Api::error($exception->getMessage(),$code);
+		if(Request::is('api/*'))
+		{
+			return Api::error($exception->getMessage(),$code);
+		}
+
+		return Response::view('errors.error', array(), 500);
 	}
 });
 
 
-App::missing(function()
+App::missing(function($exception)
 {
-	return Api::error('Not Found',404);
+	if(Request::is('api/*'))
+	{
+		return Api::error('Not Found',404);
+	}
+	return Response::view('errors.404', array(), 404);
 });
+
 
 /*
 |--------------------------------------------------------------------------
