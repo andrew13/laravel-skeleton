@@ -63,6 +63,31 @@ Route::filter('auth.api', function()
 });
 
 
+/**
+ * Authenticate valid auth token key
+ */
+Route::filter('auth.token', function()
+{
+	// Validate api key
+	$rules = ['token' => 'required'];
+
+	$validate = Hyfn::validate($rules);
+
+	// Invalid API key
+	if ($validate !== true)
+	{
+		return Api::error($validate);
+	}
+
+	$validToken = User::isValidToken(Input::get('token'));
+
+	if($validToken !== true)
+	{
+		return Api::error(Lang::get('errors.invalid_token'));
+	}
+});
+
+
 Route::filter('auth.basic', function()
 {
 	return Auth::basic();

@@ -2,6 +2,16 @@
 
 return array(
 
+	/**
+	 * Cache Keys
+	 */
+	'key_token_from_user' => 'users_token_',
+
+	/*
+	 * Expire times - 0 = forever
+	 */
+	'expire_auth_token' => 0,
+
 	/*
 	|--------------------------------------------------------------------------
 	| Default Cache Driver

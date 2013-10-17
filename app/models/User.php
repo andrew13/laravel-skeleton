@@ -98,4 +98,78 @@ class User extends ConfideUser {
 			return false;
 		}
 	}
+
+	public function login($input)
+	{
+		// If you wish to only allow login from confirmed users, call logAttempt
+		// with the second parameter as true.
+		// logAttempt will check if the 'email' perhaps is the username.
+		if ( Confide::logAttempt( $input, Config::get('confide::login_confirmed') ) )
+		{
+			$this->setToken();
+			return true;
+		}
+		else
+		{
+			$user = new User;
+
+			// Check if there was too many login attempts
+			if( Confide::isThrottled( $input ) )
+			{
+				$err_msg = Lang::get('confide::confide.alerts.too_many_attempts');
+			}
+			elseif( $user->checkUserExists( $input ) and ! $user->isConfirmed( $input ) )
+			{
+				$err_msg = Lang::get('confide::confide.alerts.not_confirmed');
+			} else {
+				$err_msg  = Lang::get('confide::confide.alerts.wrong_credentials');
+			}
+
+			return $err_msg;
+		}
+	}
+
+
+	public function getToken()
+	{
+		$token = Redis::get(Config::get('cache.key_token_from_user').Confide::user()->id);
+		return $token;
+	}
+
+	/**
+	 * Check Redis for the valid user token
+	 * @param $token
+	 * @return bool
+	 */
+	public static function isValidToken($token)
+	{
+		$valid = false;
+		if(Redis::get($token)) {
+			return true;
+		}
+	}
+
+	private function setToken()
+	{
+
+		// Invalidate old token
+		if($this->getToken())
+		{
+			$this->invalidateToken();
+		}
+
+		// Generate Auth Token
+		$this->token = md5(Hash::make(microtime().rand(0,100000)).Confide::user()->id);
+
+		// Set key
+		Redis::set($this->token,Confide::user());
+		Redis::set(Config::get('cache.key_token_from_user').Confide::user()->id,$this->token);
+
+	}
+
+	public function invalidateToken()
+	{
+		Redis::del($this->getToken());
+	}
+
 }

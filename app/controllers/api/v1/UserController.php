@@ -2,9 +2,10 @@
 
 
 class ApiV1UserController extends ApiController {
-	public function index()
+
+		public function index()
 		{
-			$users =  User::all();
+			$users = User::all();
 			return Api::response($users->toArray());
 		}
 
@@ -25,31 +26,14 @@ class ApiV1UserController extends ApiController {
 				'password' => Input::get( 'password' )
 			);
 
-			// If you wish to only allow login from confirmed users, call logAttempt
-			// with the second parameter as true.
-			// logAttempt will check if the 'email' perhaps is the username.
-			if ( Confide::logAttempt( $input, Config::get('confide::login_confirmed') ) )
-			{
-				return Api::response(Confide::user()->toArray());
-			}
-			else
-			{
-				$user = new User;
+			$user = new User;
+			$login = $user->login($input);
+			if($login !== true) return Api::error($login);
 
-				// Check if there was too many login attempts
-				if( Confide::isThrottled( $input ) )
-				{
-					$err_msg = Lang::get('confide::confide.alerts.too_many_attempts');
-				}
-				elseif( $user->checkUserExists( $input ) and ! $user->isConfirmed( $input ) )
-				{
-					$err_msg = Lang::get('confide::confide.alerts.not_confirmed');
-				} else {
-					$err_msg  = Lang::get('confide::confide.alerts.wrong_credentials');
-				}
+			$confideUser = Confide::user();
+			$confideUser->token = $user->getToken();
+			return Api::response($confideUser->toArray());
 
-				return Api::error( $err_msg );
-			}
 		}
 
 
