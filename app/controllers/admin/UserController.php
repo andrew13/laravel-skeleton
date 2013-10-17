@@ -96,6 +96,19 @@ class AdminUserController extends AdminController {
 	* Log the user in
 	*/
 	public function do_login() {
+		$rules = [
+			'username' => 'required',
+			'password' => 'required'
+		];
+
+		$validate = Hyfn::validate($rules);
+		if($validate !== true) {
+			$user = new User();
+			return Redirect::to('login')
+				->withInput(Input::except('password'))
+				->withErrors($validate->errors());
+		}
+
 		$input = array(
 			'email'    => Input::get( 'email' ), // May be the username too
 			'username' => Input::get( 'username' ), // so we have to pass both
@@ -137,9 +150,12 @@ class AdminUserController extends AdminController {
 				$err_msg = Lang::get('confide::confide.alerts.wrong_credentials');
 			}
 
+			$user->validationErrors->add('login_error', $err_msg);
+
 			return Redirect::to('login')
 				->withInput(Input::except('password'))
-				->with('error', $err_msg);
+				->with('error', true)
+				->withErrors($user->errors());
 		}
 	}
 

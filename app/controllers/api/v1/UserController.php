@@ -48,7 +48,7 @@ class ApiV1UserController extends ApiController {
 			];
 
 			$validate = Hyfn::validate($rules);
-			if($validate!==true) return Api::error($validate);
+			if($validate!==true) return Api::error($validate->errors()->getMessages());
 
 			$input = array(
 				'email'    => Input::get( 'email' ), // May be the username too

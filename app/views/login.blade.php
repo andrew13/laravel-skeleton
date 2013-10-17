@@ -36,7 +36,11 @@
 
 
 <div class="account-container stacked">
-
+	@if ( Session::get('error') )
+		<div class="alert alert-danger alert-dismissable">
+			{{ $errors->first('login_error') }}
+		</div>
+	@endif
 	<div class="content clearfix">
 
 		<form action="#" method="post">
@@ -48,12 +52,14 @@
 
 				<div class="field">
 					<label for="username">Username:</label>
-					<input type="text" id="username" name="username" value="" placeholder="Username" class="form-control input-lg username-field" />
+					{{ Form::text('username', '', array('class' => 'form-control input-lg username-field', 'id' => 'username', 'name' => 'username', 'placeholder' => 'Username')) }}
+					<span class="text-danger">{{ $errors->first('username') }}</span>
 				</div> <!-- /field -->
 
 				<div class="field">
 					<label for="password">Password:</label>
-					<input type="password" id="password" name="password" value="" placeholder="Password" class="form-control input-lg password-field"/>
+					{{ Form::password('password', array('class' => 'form-control input-lg password-field', 'id' => 'password', 'name' => 'password', 'placeholder' => 'Password')) }}
+					<span class="text-danger">{{ $errors->first('password') }}</span>
 				</div> <!-- /password -->
 
 			</div> <!-- /login-fields -->
@@ -69,15 +75,6 @@
 				<button class="login-action btn btn-primary">Sign In</button>
 
 			</div> <!-- .actions -->
-
-			@if ( Session::get('error') )
-				<div class="btn btn-info msgbox-error">{{{ Session::get('error') }}}</div>
-			@endif
-
-			@if ( Session::get('notice') )
-				<div class="btn btn-info msgbox-alert">{{{ Session::get('notice') }}}</div>
-			@endif
-
 		</form>
 
 	</div> <!-- /content -->

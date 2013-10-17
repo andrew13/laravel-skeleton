@@ -17,7 +17,7 @@ class Hyfn {
 
 		if($validation->fails())
 		{
-			return $validation->errors()->getMessages();
+			return $validation;
 		}
 
 		return true;

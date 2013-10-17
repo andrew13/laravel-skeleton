@@ -58,7 +58,7 @@ Route::filter('auth.api', function()
 	// Invalid API key
 	if ($validate !== true)
 	{
-		return Api::error($validate);
+		return Api::error($validate->errors()->getMessages());
 	}
 });
 
@@ -76,7 +76,7 @@ Route::filter('auth.token', function()
 	// Invalid API key
 	if ($validate !== true)
 	{
-		return Api::error($validate);
+		return Api::error($validate->errors()->getMessages());
 	}
 
 	$validToken = User::isValidToken(Input::get('token'));
