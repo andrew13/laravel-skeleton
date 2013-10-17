@@ -30,6 +30,8 @@ Route::get('/login', 'AdminUserController@login');
 
 Route::post('/login', 'AdminUserController@do_login');
 
+Route::get('/logout', 'AdminUserController@logout');
+
 /**
  * API Grouping routes
  */
@@ -45,10 +47,7 @@ Route::group(array('prefix' => 'api/v1','before' => 'auth.api'), function() {
 Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 
 
-	Route::get('/',function()
-	{
-		return View::make('admin/index');
-	});
+	Route::get('/', 'AdminController@index');
 
 	Route::resource('users', 'AdminUserController');
 

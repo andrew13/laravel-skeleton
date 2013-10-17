@@ -58,7 +58,7 @@
 					</a>
 
 					<ul class="dropdown-menu">
-						<li><a href="/admin/account/ID">Account Settings</a></li>
+						<li><a href="/admin/users/{{$user->id}}/edit">Account Settings</a></li>
 						<li class="divider"></li>
 						<li><a href="javascript:;">Logout</a></li>
 					</ul>
@@ -110,7 +110,7 @@
 
 						<ul class="dropdown-menu">
 							<li><a href="/admin/users">All Users</a></li>
-							<li><a href="/admin/users/profile">My Account</a></li> <!-- TODO : Should this point to same as above link? -->
+							<li><a href="/admin/users/{{$user->id}}/edit">My Account</a></li> <!-- TODO : Should this point to same as above link? -->
 							<li><a href="/admin/users/create">Create New Account</a></li>
 						</ul>
 					</li>
