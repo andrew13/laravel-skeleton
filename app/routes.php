@@ -31,6 +31,7 @@ Route::get('/logout', 'AdminUserController@logout');
  * API Grouping routes
  */
 Route::group(array('prefix' => 'api/v1','before' => 'auth.api'), function() {
+
 	Route::post('/login', 'ApiV1UserController@login');
 
 	// NEED VALID TOKEN BEFORE ALLOWING THESE ROUTES

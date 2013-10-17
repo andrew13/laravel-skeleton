@@ -51,18 +51,20 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 
-					<a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-user"></i>
-						EMAIL
-						<b class="caret"></b>
-					</a>
+					@if( !empty($user))
+						<a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-user"></i>
+							{{$user->username}}
+							<b class="caret"></b>
+						</a>
 
-					<ul class="dropdown-menu">
-						<li><a href="/admin/users/{{$user->id}}/edit">Account Settings</a></li>
-						<li class="divider"></li>
-						<li><a href="/logout">Logout</a></li>
-					</ul>
 
+						<ul class="dropdown-menu">
+							<li><a href="/admin/users/{{$user->id}}/edit">Account Settings</a></li>
+							<li class="divider"></li>
+							<li><a href="/logout">Logout</a></li>
+						</ul>
+					@endif
 				</li>
 			</ul>
 
@@ -77,7 +79,7 @@
 
 
 
-
+@if( !empty($user))
 
 <div class="subnavbar">
 
@@ -122,7 +124,7 @@
 	</div> <!-- /subnavbar-inner -->
 
 </div> <!-- /subnavbar -->
-
+@endif
 
 <div class="main">
 
