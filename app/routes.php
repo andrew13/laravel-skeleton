@@ -36,9 +36,14 @@ Route::get('/logout', 'AdminUserController@logout');
  * API Grouping routes
  */
 Route::group(array('prefix' => 'api/v1','before' => 'auth.api'), function() {
-	Route::get('/test',function() { return ['success' => 1];});
 	Route::post('/login', 'ApiV1UserController@login');
-	Route::resource('users', 'api\v1\UserController');
+
+	// NEED VALID TOKEN BEFORE ALLOWING THESE ROUTES
+	Route::group(array('before' => 'auth.token'), function() {
+		Route::resource('users', 'ApiV1UserController');
+	});
+
+
 });
 
 /**
