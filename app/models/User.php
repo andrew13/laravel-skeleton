@@ -136,6 +136,7 @@ class User extends ConfideUser {
 	public static function getFromToken($token)
 	{
 		$user = Cache::get($token);
+		return $user;
 	}
 
 	/**

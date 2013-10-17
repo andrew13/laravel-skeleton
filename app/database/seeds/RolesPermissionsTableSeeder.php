@@ -45,7 +45,7 @@ class RolesPermissionsTableSeeder extends Seeder {
 		$manageAdmins->save();
 
 		$manageUsers = new Permission;
-		$manageUsers->name = 'manage_user';
+		$manageUsers->name = 'manage_users';
 		$manageUsers->display_name = 'Manage Users';
 		$manageUsers->save();
 

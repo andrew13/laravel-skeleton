@@ -5,8 +5,15 @@ class ApiV1UserController extends ApiController {
 
 	public function index()
 	{
-		$users = User::all();
-		return Api::response($users->toArray());
+		// Get user from token
+		$user = User::getFromToken($this->token);
+		// Find permissions and find users that this person has permissions to view
+		if($user->can('manage_user')) {
+
+			$users = User::all();
+			return Api::response($users->toArray());
+		}
+		return Api::error(Lang::get('errors.unauthorized_content'));
 	}
 
 	public function create()

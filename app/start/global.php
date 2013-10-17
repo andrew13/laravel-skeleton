@@ -69,7 +69,7 @@ App::error(function(Exception $exception, $code)
 			return Api::error($exception->getMessage(),$code);
 		}
 
-		return Response::view('errors.error', array(), 500);
+		return Response::view('errors.error', array(), $code);
 	}
 });
 
