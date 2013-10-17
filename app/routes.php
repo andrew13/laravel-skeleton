@@ -21,11 +21,6 @@ Route::get('/',function()
 	return Redirect::to('/admin');
 });
 
-/*Route::get('/login',function()
-{
-	return View::make('/login');
-});*/
-
 Route::get('/login', 'AdminUserController@login');
 
 Route::post('/login', 'AdminUserController@do_login');
@@ -66,16 +61,4 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	Route::post('users/reset_password', 'AdminUserController@do_reset_password');
 	Route::get('users/logout', 'AdminUserController@logout');
 
-/*
-	Route::get('/users/',function()
-	{
-		return View::make('admin/users/index');
-	});
-
-	Route::get('/users/profile',function()
-	{
-		return View::make('admin/users/user');
-	});
-
-*/
 });
