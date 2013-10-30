@@ -6,7 +6,7 @@ Basically what the name states. This can serve as the starter project for all fu
 ### Step 1: Get the code
 #### Option 1: Git Clone
 
-	git clone git@github.com:hyfn/avon-skeleton.git
+	git clone git@github.com:hyfn/laravel-skeleton.git
 
 #### Option 2: Download the repository
 
