@@ -44,6 +44,11 @@ Your webserver needs to be able to write to the cache storage
 
     chown -R youruser:www-data .
     
+### Step 4: Run the init (just refreshes the app) ###
+
+    php artisan cms:init --env=local
+This will output the randomly generate password for your "admin" user, after the seeder succeeds.
+    
 ## Laravel PHP Framework
 
 [![Latest Stable Version](https://poser.pugx.org/laravel/framework/version.png)](https://packagist.org/packages/laravel/framework) [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.png)](https://packagist.org/packages/laravel/framework) [![Build Status](https://travis-ci.org/laravel/framework.png)](https://travis-ci.org/laravel/framework)
