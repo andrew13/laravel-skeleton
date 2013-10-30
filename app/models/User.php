@@ -9,8 +9,8 @@ class User extends ConfideUser {
 	public static $rules = array(
 		'username'              => 'required|alpha_dash|between:4,16|unique:users',
 		'email'                 => 'required|email|unique:users',
-		'password'              => 'required|alpha_num|between:4,8|confirmed',
-		'password_confirmation' => 'required|alpha_num|between:4,8',
+		'password'              => 'required|between:4,16|confirmed',
+		'password_confirmation' => 'required|between:4,16',
 	);
 
 
