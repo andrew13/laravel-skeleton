@@ -4,6 +4,7 @@
 class ApiController extends Controller {
 
 	protected $token;
+	protected $user;
 
 	public function __construct()
 	{
