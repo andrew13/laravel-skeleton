@@ -2,18 +2,6 @@
 
 class AdminUserController extends AdminController {
 
-	/**
-	 * Setup the layout used by the controller.
-	 *
-	 * @return void
-	 */
-	protected function setupLayout()
-	{
-		if (!is_null($this->layout))
-		{
-			$this->layout = View::make($this->layout);
-		}
-	}
 
 	public function index()
 	{
@@ -30,7 +18,9 @@ class AdminUserController extends AdminController {
 		// Get form data, create new user
 		// Hacky, I know, but had to do this because of Sentry
 		$user_data = Input::all();
-		$user = new User($user_data);
+		$user = new User();
+		$user->fill($user_data);
+
 		// TODO:  If we need to do confirmation, then stop doing this below
 		$user->confirmed = 1;
 
@@ -84,11 +74,11 @@ class AdminUserController extends AdminController {
 		{
 			// If user is logged, redirect to internal
 			// page, change it to '/admin', '/dashboard' or something
-			return Redirect::to('/')->with('user', Confide::user());
+			return Redirect::to('/');
 		}
 		else
 		{
-			return View::make('/login')->with('user', new User());
+			return View::make('/login');
 		}
 	}
 

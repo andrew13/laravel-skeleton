@@ -8,6 +8,7 @@ class ApiController extends Controller {
 	public function __construct()
 	{
 		$this->token = Input::get('token');
+		$this->user = User::getFromToken($this->token);
 	}
 
 }
