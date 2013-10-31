@@ -37,7 +37,7 @@ class InitCmsCommand extends Command {
 	 */
 	public function fire()
 	{
-		$this->call('migrate:refresh');
+		$this->call('migrate');
 		$this->call('db:seed');
 	}
 
