@@ -6,7 +6,7 @@ Basically what the name states. This can serve as the starter project for all fu
 ### Step 1: Get the code
 #### Option 1: Git Clone
 
-	git clone git@github.com:hyfn/avon-skeleton.git
+	git clone git@github.com:hyfn/laravel-skeleton.git
 
 #### Option 2: Download the repository
 
@@ -43,6 +43,11 @@ Open ***app/config/local/app.php***  and update the 'url' config to use whatever
 Your webserver needs to be able to write to the cache storage
 
     chown -R youruser:www-data .
+    
+### Step 4: Run the init (just refreshes the app) ###
+
+    php artisan cms:init --env=local
+This will output the randomly generate password for your "admin" user, after the seeder succeeds.
     
 ## Laravel PHP Framework
 
