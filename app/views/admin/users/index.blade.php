@@ -17,6 +17,7 @@
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th class="td-actions"></th>
+				<th class="td-actions"></th>
 			</tr>
 			</thead>
 			<tbody>
@@ -30,6 +31,11 @@
 					<a href="/admin/users/{{$user->id}}/edit" class="btn btn-xs btn-primary">
 						<i class="btn-icon-only icon-edit"></i>
 					</a>
+				</td>
+				<td class="td-actions">
+					{{ Form::open(array('url' => 'admin/users/' . $user->id, 'method' => 'delete','class' => 'form-confirm-delete', 'id' => 'delete-user')) }}
+							<button type="submit" class="btn btn-xs btn-danger"><i class="btn-icon-only icon-remove"></i></button>
+					{{ Form::close() }}
 				</td>
 			</tr>
 			@endforeach

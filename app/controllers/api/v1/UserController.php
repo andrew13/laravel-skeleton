@@ -69,10 +69,13 @@ class ApiV1UserController extends ApiController {
 		$login = $user->login($input);
 		if($login !== true) return Api::error($login);
 
-		$confideUser = Confide::user();
-		$confideUser->token = User::getToken($confideUser->id);
+		$token = $user->token;
 
-		return Api::response($confideUser->toArray());
+		$user = User::getFromToken($token);
+		$user = $user->toArray();
+		$user['token'] = $token;
+
+		return Api::response($user);
 	}
 
 	/**

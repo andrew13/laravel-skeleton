@@ -9,23 +9,26 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 
 	@section('css')
-		<link href="/css/bootstrap.min.css" rel="stylesheet">
-		<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
-
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
-		<link href="/css/font-awesome.min.css" rel="stylesheet">
 
-		<link href="/css/ui-lightness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet">
+		<link href="/assets/admin/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/assets/admin/css/bootstrap-responsive.min.css" rel="stylesheet">
 
-		<link href="/css/base-admin-3.css" rel="stylesheet">
-		<link href="/css/base-admin-3-responsive.css" rel="stylesheet">
+		<link href="/assets/admin/css/font-awesome.min.css" rel="stylesheet">
 
-		<link href="/css/pages/dashboard.css" rel="stylesheet">
+		<link href="/assets/admin/css/ui-lightness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet">
 
-		<link href="/css/custom.css" rel="stylesheet">
+		<link href="/assets/admin/css/base-admin-3.css" rel="stylesheet">
+		<link href="/assets/admin/css/base-admin-3-responsive.css" rel="stylesheet">
+
+		<link href="/assets/admin/css/pages/dashboard.css" rel="stylesheet">
+		<link href="/assets/admin/js/plugins/msgbox/jquery.msgbox.css" rel="stylesheet">
+
+		<link href="/assets/admin/css/custom.css" rel="stylesheet">
 
 		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 		<!--[if lt IE 9]>
+
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 	@show
@@ -182,18 +185,14 @@
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="/js/libs/jquery-1.9.1.min.js"></script>
-<script src="/js/libs/jquery-ui-1.10.0.custom.min.js"></script>
-<script src="/js/libs/bootstrap.min.js"></script>
+<script src="/assets/admin/js/libs/jquery-1.9.1.min.js"></script>
+<script src="/assets/admin/js/libs/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="/assets/admin/js/libs/bootstrap.min.js"></script>
 
-<script src="/js/plugins/flot/jquery.flot.js"></script>
-<script src="/js/plugins/flot/jquery.flot.pie.js"></script>
-<script src="/js/plugins/flot/jquery.flot.resize.js"></script>
+<script src="/assets/admin/js/plugins/lightbox/jquery.lightbox.min.js"></script>
+<script src="/assets/admin/js/plugins/msgbox/jquery.msgbox.min.js"></script>
 
-<script src="/js/Application.js"></script>
-
-<script src="/js/charts/area.js"></script>
-<script src="/js/charts/donut.js"></script>
+<script src="/assets/admin/js/Application.js"></script>
 @show
 
 

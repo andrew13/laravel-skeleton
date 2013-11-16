@@ -2,15 +2,11 @@
 
 return array(
 
-	/**
-	 * Cache Keys
-	 */
-	'key_token_from_user' => 'users_token_',
 
 	/*
-	 * Expire times - 0 = forever
+	 * Expire times - 10080- = week
 	 */
-	'expire_auth_token' => 0,
+	'expire_auth_token' => 10080,
 
 	/*
 	|--------------------------------------------------------------------------
