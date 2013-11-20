@@ -60,6 +60,15 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 
 App::error(function(Exception $exception, $code)
 {
+
+	// Sentry exception loggins
+	if(Config::get('sentry.enabled') === true)
+	{
+		// Instantiate a new client with a compatible DSN
+		$client = new Raven_Client(Config::get('sentry.dsn'));
+		$client->getIdent($client->captureException($exception));
+	}
+
 	if (Config::get('app.debug') == true)
 	{
 		Log::error($exception);

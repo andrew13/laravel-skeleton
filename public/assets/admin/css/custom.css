@@ -7,3 +7,6 @@ Last change:	03/25/2013
 Assigned to:	You
 
 -------------------------------------------------------------------*/
+table.table-striped tr:hover {
+    background: aliceblue;
+}
