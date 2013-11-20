@@ -48,7 +48,12 @@ Your webserver needs to be able to write to the cache storage
 
     php artisan cms:init --env=local
 This will output the randomly generate password for your "admin" user, after the seeder succeeds.
-    
+
+## Sentry Exception Logging
+https://www.getsentry.com
+
+In order to enable sentry, just insert your dsn in the config file and set "enabled" to "TRUE"
+
 ## Laravel PHP Framework
 
 [![Latest Stable Version](https://poser.pugx.org/laravel/framework/version.png)](https://packagist.org/packages/laravel/framework) [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.png)](https://packagist.org/packages/laravel/framework) [![Build Status](https://travis-ci.org/laravel/framework.png)](https://travis-ci.org/laravel/framework)
