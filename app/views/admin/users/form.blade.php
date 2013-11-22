@@ -56,10 +56,7 @@
 			</div> <!-- /controls -->
 		</div> <!-- /control-group -->
 
-
-
-			<br />
-
+		<br />
 
 		<div class="form-group">
 

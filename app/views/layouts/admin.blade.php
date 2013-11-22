@@ -133,6 +133,15 @@
 
 <div class="container">
 
+@if(!empty($success_message) || Session::get('success_message'))
+<div class="row">
+	<div class="alert alert-success alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+		<strong>@yield($success_message,Session::get('success_message'))</strong>
+	</div>
+</div>
+@endif
+
 @section('content')
 <div class="row">
 	<div class="widget stacked">

@@ -22,6 +22,12 @@ ClassLoader::addDirectories(array(
 
 
 /**
+ * New relic App
+ */
+Newrelic::setAppName( Config::get('laravel-newrelic::app_name') );
+
+
+/**
  * Custom validator
  */
 // Register Api key validator

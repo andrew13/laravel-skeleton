@@ -25,7 +25,8 @@ class AdminUserController extends AdminController {
 		$user->confirmed = 1;
 
 		if ($user->save()) {
-			return Redirect::to('admin/users');
+			return Redirect::to('admin/users/' . $user->id . '/edit')
+				->with('success_message',trans('admin.create_success'));
 		} else {
 			return Redirect::to('admin/users/create')
 				->withInput(Input::except('password'))
@@ -51,7 +52,8 @@ class AdminUserController extends AdminController {
 		$user->fill($user_data);
 
 		if ($user->updateUniques()) {
-			return Redirect::to('admin/users');
+			return Redirect::to('admin/users/' . $user_id . '/edit')
+				->with('success_message',trans('admin.update_success'));
 		} else {
 			return Redirect::to('admin/users/' . $user_id . '/edit')
 				->withInput(Input::except('password'))
