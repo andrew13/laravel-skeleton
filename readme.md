@@ -54,6 +54,13 @@ https://www.getsentry.com
 
 In order to enable sentry, just insert your dsn in the config file and set "enabled" to "TRUE"
 
+## NewRelic
+http://www.newrelic.com
+
+Using this package https://github.com/In-Touch/laravel-newrelic
+
+Follow The instructions on NewRelic.com to install the NewRelic PHP agent on your server/environment. Then, edit ***app/config/packages/intouch/laravel-newrelic/config.php***, Change the app_name to that of your application.
+
 ## Laravel PHP Framework
 
 [![Latest Stable Version](https://poser.pugx.org/laravel/framework/version.png)](https://packagist.org/packages/laravel/framework) [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.png)](https://packagist.org/packages/laravel/framework) [![Build Status](https://travis-ci.org/laravel/framework.png)](https://travis-ci.org/laravel/framework)
