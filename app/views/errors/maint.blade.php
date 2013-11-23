@@ -12,23 +12,12 @@
 	<div class="col-md-12">
 
 		<div class="error-container">
-			<h1>Oops!</h1>
-
-			<h2>404 Not Found</h2>
+			<img src="/assets/admin/img/down.png" />
+			<h2>Apologies For The Inconvenience</h2>
 
 			<div class="error-details">
-				Sorry, an error has occured, Requested page not found!
-
+				The Site Is Down For Scheduled Maintenance, Please Come Back Soon.
 			</div> <!-- /error-details -->
-
-			<div class="error-actions">
-				<a href="/" class="btn btn-primary btn-lg">
-					<i class="icon-chevron-left"></i>
-					&nbsp;
-					Back to Home
-				</a>
-
-			</div> <!-- /error-actions -->
 
 		</div> <!-- /error-container -->
 

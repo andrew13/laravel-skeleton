@@ -112,7 +112,7 @@ App::missing(function($exception)
 
 App::down(function()
 {
-	return Response::make("Be right back!", 503);
+	return Response::view('errors.maint', array(), 503);
 });
 
 /*

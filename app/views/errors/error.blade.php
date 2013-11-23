@@ -2,7 +2,7 @@
 
 @section('css')
 @parent
-<link href="/css/pages/signin.css" rel="stylesheet">
+<link href="/assets/admin/css/pages/signin.css" rel="stylesheet">
 @stop
 
 @section('body')
