@@ -65,7 +65,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="/admin/users/{{$logged_in_user->id}}/edit">Account Settings</a></li>
 							<li class="divider"></li>
-							<li><a href="/logout">Logout</a></li>
+							<li><a href="/admin/logout">Logout</a></li>
 						</ul>
 					@endif
 				</li>

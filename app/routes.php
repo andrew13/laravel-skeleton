@@ -21,44 +21,43 @@ Route::get('/',function()
 	return Redirect::to('/admin');
 });
 
-Route::get('/admin/login', 'AdminUserController@login');
-Route::post('/admin/login', 'AdminUserController@do_login');
-
-Route::get('/admin/logout', 'AdminUserController@logout');
 
 /**
  * API Grouping routes
  */
 Route::group(array('prefix' => 'api/v1','before' => 'auth.api'), function() {
 
-	Route::post('/login', 'ApiV1UserController@login');
+	Route::post('login', 'ApiV1UserController@login');
 
 	// NEED VALID TOKEN BEFORE ALLOWING THESE ROUTES
 	Route::group(array('before' => 'auth.token'), function() {
 		Route::resource('users', 'ApiV1UserController');
 		Route::any('/logout','ApiV1UserController@logout');
 	});
-
-
 });
 
 /**
- * Admin routes
+ * ADMIN ROUTES
  */
-Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
+Route::group(array('prefix' => 'admin'), function() {
 
+	// Admin routes with no auth
+	Route::get('login', 'AdminUserController@login');
+	Route::post('login', 'AdminUserController@do_login');
+	Route::get('logout', 'AdminUserController@logout');
 
-	Route::get('/', 'AdminController@index');
+	// Admin routes that require auth
+	Route::group(array('before' => 'auth'), function() {
 
-	Route::resource('users', 'AdminUserController');
+		Route::get('/', 'AdminController@index');
 
-	//Route::get('users/login', 'AdminUserController@login');
-	//Route::post('users/login', 'AdminUserController@do_login');
-	Route::get('users/confirm/{code}', 'AdminUserController@confirm');
-	Route::get('users/forgot_password', 'AdminUserController@forgot_password');
-	Route::post('users/forgot_password', 'AdminUserController@do_forgot_password');
-	Route::get('users/reset_password/{token}', 'AdminUserController@reset_password');
-	Route::post('users/reset_password', 'AdminUserController@do_reset_password');
-	Route::get('users/logout', 'AdminUserController@logout');
+		Route::resource('users', 'AdminUserController');
+
+		Route::get('users/confirm/{code}', 'AdminUserController@confirm');
+		Route::get('users/forgot_password', 'AdminUserController@forgot_password');
+		Route::post('users/forgot_password', 'AdminUserController@do_forgot_password');
+		Route::get('users/reset_password/{token}', 'AdminUserController@reset_password');
+		Route::post('users/reset_password', 'AdminUserController@do_reset_password');
+	});
 
 });
