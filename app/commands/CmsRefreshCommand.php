@@ -4,21 +4,21 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class InitCmsCommand extends Command {
+class CmsRefreshCommand extends Command {
 
 	/**
 	 * The console command name.
 	 *
 	 * @var string
 	 */
-	protected $name = 'cms:init';
+	protected $name = 'cms:refresh';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Migrates and seeds the CMS for the first time.';
+	protected $description = 'Will refresh the migrations and re-seed the app';
 
 	/**
 	 * Create a new command instance.
@@ -37,7 +37,7 @@ class InitCmsCommand extends Command {
 	 */
 	public function fire()
 	{
-		$this->call('migrate');
+		$this->call('migrate:refresh');
 		$this->call('db:seed');
 	}
 

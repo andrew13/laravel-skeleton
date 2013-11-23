@@ -21,11 +21,10 @@ Route::get('/',function()
 	return Redirect::to('/admin');
 });
 
-Route::get('/login', 'AdminUserController@login');
+Route::get('/admin/login', 'AdminUserController@login');
+Route::post('/admin/login', 'AdminUserController@do_login');
 
-Route::post('/login', 'AdminUserController@do_login');
-
-Route::get('/logout', 'AdminUserController@logout');
+Route::get('/admin/logout', 'AdminUserController@logout');
 
 /**
  * API Grouping routes

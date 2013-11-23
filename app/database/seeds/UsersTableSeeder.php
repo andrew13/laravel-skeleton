@@ -19,11 +19,11 @@ class UsersTableSeeder extends Seeder {
 
 		$user = User::create(array(
 	      'username'                => 'admin',
-	      'email'                   => 'ops@hyfn.com',
+	      'email'                   => 'admin@example.com',
 	      'password'                => $password,
 	      'password_confirmation'   => $password,
 	      'first_name'              => 'hyfn',
-	      'last_name'               => 'admin',
+	      'last_name'               => 'skeleton',
 	      'confirmed'               => 1
 		));
 		$user->save();

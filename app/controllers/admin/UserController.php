@@ -76,11 +76,11 @@ class AdminUserController extends AdminController {
 		{
 			// If user is logged, redirect to internal
 			// page, change it to '/admin', '/dashboard' or something
-			return Redirect::to('/');
+			return Redirect::to('/admin');
 		}
 		else
 		{
-			return View::make('/login');
+			return View::make('login');
 		}
 	}
 
@@ -144,7 +144,7 @@ class AdminUserController extends AdminController {
 
 			$user->validationErrors->add('login_error', $err_msg);
 
-			return Redirect::to('login')
+			return Redirect::to('admin/login')
 				->withInput(Input::except('password'))
 				->with('error', true)
 				->withErrors($user->errors());

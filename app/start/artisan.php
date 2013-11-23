@@ -11,4 +11,5 @@
 |
 */
 
-Artisan::add(new InitCmsCommand);
+Artisan::add(new CmsInitCommand);
+Artisan::add(new CmsRefreshCommand);
