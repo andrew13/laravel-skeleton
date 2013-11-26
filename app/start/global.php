@@ -74,23 +74,31 @@ App::error(function(Exception $exception, $code)
 
 	if (Config::get('app.debug') == true)
 	{
-		Log::error($exception);
-	} else {
 		if(Request::is('api/*'))
 		{
 			return Api::error($exception->getMessage(),$code);
 		}
-
+		Log::error($exception);
+	} else {
+		if(Request::is('api/*'))
+		{
+			return Api::error(Lang::get('500'),$code);
+		}
 		return Response::view('errors.error', array(), $code);
 	}
 });
 
 
+/*
+ |---------------------------------
+ | Handle 404s
+ |----------------------------------
+ */
 App::missing(function($exception)
 {
 	if(Request::is('api/*'))
 	{
-		return Api::error(Lang::get('errors.not_found'),404);
+		return Api::error(Lang::get('errors.404'),404);
 	}
 	return Response::view('errors.404', array(), 404);
 });
@@ -111,7 +119,7 @@ App::down(function()
 {
 	if(Request::is('api/*'))
 	{
-		return Api::error(Lang::get('errors.maintenance'),503);
+		return Api::error(Lang::get('errors.503'),503);
 	}
 	return Response::view('errors.maint', array(), 503);
 });
