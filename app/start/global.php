@@ -20,7 +20,6 @@ ClassLoader::addDirectories(array(
 
 ));
 
-
 /**
  * New relic App
  */
@@ -66,8 +65,6 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 
 App::error(function(Exception $exception, $code)
 {
-
-	// Sentry exception loggins
 	if(Config::get('sentry.enabled') === true)
 	{
 		// Instantiate a new client with a compatible DSN
@@ -93,7 +90,7 @@ App::missing(function($exception)
 {
 	if(Request::is('api/*'))
 	{
-		return Api::error('Not Found',404);
+		return Api::error(Lang::get('errors.not_found'),404);
 	}
 	return Response::view('errors.404', array(), 404);
 });
@@ -112,6 +109,10 @@ App::missing(function($exception)
 
 App::down(function()
 {
+	if(Request::is('api/*'))
+	{
+		return Api::error(Lang::get('errors.maintenance'),503);
+	}
 	return Response::view('errors.maint', array(), 503);
 });
 
