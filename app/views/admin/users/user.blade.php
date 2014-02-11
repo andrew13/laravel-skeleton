@@ -89,7 +89,7 @@
 
 										<div class="col-md-offset-4 col-md-8">
 											<button type="submit" class="btn btn-primary">Save</button> 
-											<button class="btn btn-default">Cancel</button>
+											<a href="javascript:history.go(-1);" class="btn btn-default">Cancel</a>
 										</div>
 									</div> <!-- /form-actions -->
 								</fieldset>
@@ -169,7 +169,7 @@
 										
 										<div class="form-group">
 											<div class="col-md-offset-4 col-md-8">
-												<button type="submit" class="btn btn-primary">Save</button> <button class="btn btn-default">Cancel</button>
+												<button type="submit" class="btn btn-primary">Save</button> <a href="javascript:history.go(-1);" class="btn btn-default">Cancel</a>
 											</div>
 										</div>
 									</fieldset>
