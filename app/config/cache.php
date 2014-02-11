@@ -90,6 +90,6 @@ return array(
 	|
 	*/
 
-	'prefix' => 'laravel',
+	'prefix' => 'skeleton',
 
 );
