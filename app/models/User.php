@@ -135,7 +135,8 @@ class User extends ConfideUser {
 	 */
 	public static function getFromToken($token)
 	{
-		$user = Cache::get($token);
+		$userId = Cache::get($token);
+		$user = User::find($userId);
 		return $user;
 	}
 
@@ -164,7 +165,7 @@ class User extends ConfideUser {
 		$user = Confide::user();
 
 		// Set key
-		Cache::add($this->token, $user, Config::get('cache.expire_auth_token'));
+		Cache::add($this->token, $user->id, Config::get('cache.expire_auth_token'));
 	}
 
 	/**
