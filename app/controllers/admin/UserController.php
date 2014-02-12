@@ -49,6 +49,12 @@ class AdminUserController extends AdminController {
 		// Get form data, find user and update
 		$user_data = Input::all();
 		$user = User::find($user_id);
+
+		if ((empty($user_data['password'])) && (empty($user_data['password_confirmation']))) {
+			unset($user_data['password']);
+			unset($user_data['password_confirmation']);
+		}
+
 		$user->fill($user_data);
 
 		if ($user->updateUniques()) {
