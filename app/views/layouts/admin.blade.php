@@ -131,39 +131,40 @@
 
 <div class="main">
 
-<div class="container">
+	<div class="container">
 
-@if(!empty($success_message) || Session::get('success_message'))
-<div class="row">
-	<div class="alert alert-success alert-dismissable">
-		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-		<strong>@yield($success_message,Session::get('success_message'))</strong>
+	@if(!empty($success_message) || Session::get('success_message'))
+	<div class="row">
+		<div class="alert alert-success alert-dismissable">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+			<strong>@yield($success_message,Session::get('success_message'))</strong>
+		</div>
 	</div>
-</div>
-@endif
+	@endif
 
-@section('content')
-<div class="row">
-	<div class="widget stacked">
+		<div class="row">
+		@section('content')
+			<div class="widget stacked">
 
-		<div class="widget-header">
-			<i class="icon-file"></i>
-			<h3>Welcome</h3>
-		</div> <!-- /widget-header -->
+				<div class="widget-header">
+					<i class="icon-file"></i>
+					<h3>Welcome</h3>
+				</div> <!-- /widget-header -->
 
-		<div class="widget-content">
-			<strong>Welcome to the Hyfn CMS</strong>
-			<p>This is a work in progress starter site for Laravel Projects, It includes basic routing for an admin CMS (as you can see by seeing this page). It will include basic CRUD functionality for Users. API endpoint grouping/migrations/resources.</p>
-			<p>Also, it comes packaged with this nifty CMS theme, you can see all of the components that this theme has to offer by un-zipping the admin-cms.tar.gz file, Here you can copy-pasta all of the pretty little features that your pasta hungry heart desires.</p>
-		</div> <!-- /widget-content -->
+				<div class="widget-content">
+					<strong>Welcome to the Hyfn CMS</strong>
+					<p>This is a work in progress starter site for Laravel Projects, It includes basic routing for an admin CMS (as you can see by seeing this page). It will include basic CRUD functionality for Users. API endpoint grouping/migrations/resources.</p>
+					<p>Also, it comes packaged with this nifty CMS theme, you can see all of the components that this theme has to offer by un-zipping the admin-cms.tar.gz file, Here you can copy-pasta all of the pretty little features that your pasta hungry heart desires.</p>
+				</div> <!-- /widget-content -->
 
-	</div> <!-- /widget -->
+			</div> <!-- /widget -->
 
-</div> <!-- /row -->
 
-@show
+		@show
 
-</div> <!-- /container -->
+		</div> <!-- /row -->
+
+	</div> <!-- /container -->
 
 </div> <!-- /main -->
 
