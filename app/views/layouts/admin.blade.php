@@ -142,8 +142,8 @@
 	</div>
 	@endif
 
-		<div class="row">
 		@section('content')
+		<div class="row">
 			<div class="widget stacked">
 
 				<div class="widget-header">
@@ -159,10 +159,8 @@
 
 			</div> <!-- /widget -->
 
-
-		@show
-
 		</div> <!-- /row -->
+		@show
 
 	</div> <!-- /container -->
 
