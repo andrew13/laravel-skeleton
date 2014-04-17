@@ -1,4 +1,4 @@
-##  Hyfn's defualt Laravel Project 
+##  Hyfn's default Laravel Project 
 Basically what the name states. This can serve as the starter project for all future laravel projects. 
 
 ## Setup ##
